@@ -1,0 +1,30 @@
+using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium;
+using System;
+
+namespace SeleniumTools.Selenium
+{
+    public class Wait
+    {
+        private readonly WebDriverWait _wait;
+
+        public Wait(int waitSeconds)
+        {
+            _wait = new WebDriverWait(Driver.Current, TimeSpan.FromSeconds(waitSeconds))
+            {
+                PollingInterval = TimeSpan.FromMilliseconds(500)
+            };
+
+            _wait.IgnoreExceptionTypes(
+              typeof(NoSuchElementException),
+              typeof(ElementNotVisibleException),
+              typeof(StaleElementReferenceException)
+            );
+        }
+
+        public bool Until(Func<IWebDriver, bool> condition)
+        {
+            return _wait.Until(condition);
+        }
+    }
+}
