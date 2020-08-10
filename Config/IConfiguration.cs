@@ -7,7 +7,7 @@ namespace SeleniumTools.Config
     {
         Browser Browser { get; }
         string Url { get; }
-        Dictionary<string, User> Users { get; }
+        Dictionary<string, TestUser> Users { get; }
         int TimeOut { get; }
         public Dictionary<string, string> TenantIds { get; }
     }

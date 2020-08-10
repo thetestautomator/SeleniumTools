@@ -70,7 +70,10 @@ namespace SeleniumTools.Selenium
             Current.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(_config.TimeOut);
 
         public static string ExecuteJs(string command, object[] parameters) =>
-        ((IJavaScriptExecutor)Current).ExecuteScript(command, parameters).ToString();
+            ((IJavaScriptExecutor)Current).ExecuteScript(command, parameters).ToString();
+
+        public static string ExecuteJs(string command, object parameter) =>
+                ((IJavaScriptExecutor)Current).ExecuteScript(command, parameter).ToString();
 
         public static string ExecuteJs(string command)
         {
